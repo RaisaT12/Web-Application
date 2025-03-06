@@ -1,0 +1,42 @@
+﻿@model List<WebApp.Models.Entities.Product>
+@if (TempData["AlertMessage"] is not null)
+{
+    <div class="alert alert-success">
+        <strong> Success !</strong>@TempData["AlertMessage"]
+    </div>
+}
+<h2>All Products</h2>
+<a class="btn btn-primary" asp-controller="Products" asp-action="Add">Add</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>CreationDate</th>
+            <th>Category</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody style="background-color:aliceblue">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price</td>
+                <td>@item.CreationDate</td>
+                <td>@item.Category.Name</td>
+                <td>
+                    <a class="btn btn-success" asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

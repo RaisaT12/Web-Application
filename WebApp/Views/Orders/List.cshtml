@@ -1,0 +1,37 @@
+﻿@model List<WebApp.Models.Entities.Order>
+<h2>All Orders</h2>
+<a class="btn btn-primary" asp-controller="Orders" asp-action="Add">Add</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Address</th>
+            <th>Name</th>
+            <th>Contact Number</th>
+            <th>Order Date</th>
+            <th>Product Name</th>
+            <th>Product Id</th>
+            <th>Quantity</th>
+            <th>Product Price</th>
+            <th>Bill</th>
+        </tr>
+    </thead>
+    <tbody style="background-color:aliceblue">
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Address</td>
+                <td>@item.Name</td>
+                <td>@item.Contact_Number</td>
+                <td>@item.Order_Placed</td>
+                <td>@item.Product.Name</td>
+                <td>@item.Product.Id</td>
+                <td>@item.Quantity</td>
+                <td>@item.Product.Price</td>
+                <td>@item.Bill</td>
+            </tr>
+        }
+        
+    </tbody>
+</table>

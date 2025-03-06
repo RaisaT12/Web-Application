@@ -1,0 +1,33 @@
+﻿@model List<WebApp.Models.Entities.Category>
+@if (TempData["AlertMessage"] is not null)
+{ 
+    <div class="alert alert-success">
+        <strong> Success !</strong>@TempData["AlertMessage"]
+    </div>
+}
+<h2>All Categories</h2>
+<a class="btn btn-primary" asp-controller="Categories" asp-action="Add">Add</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody style="background-color:aliceblue">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>
+                    <a class="btn btn-success" asp-controller="Categories" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                </td>
+            </tr>
+        }
+       
+    </tbody>
+</table>
